@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TypeMaster</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <div class="logo">
+        Type<span>Master</span>
+    </div>
+
+    <nav>
+        <button class="menu-btn active" onclick="openPage('homePage', this)">
+            🏠 Home
+        </button>
+
+        <button class="menu-btn" onclick="openPage('speedPage', this)">
+            ⚡ Speed Test
+        </button>
+
+        <button class="menu-btn" onclick="openPage('practicePage', this)">
+            📚 Learn
+        </button>
+
+        <button class="menu-btn" onclick="openPage('wordPage', this)">
+            📝 Word Practice
+        </button>
+    </nav>
+</header>
+
+
+<!-- ================= HOME ================= -->
+
+<section id="homePage" class="page active">
+
+    <div class="hero">
+        <div class="badge">⌨️ TYPING MASTER</div>
+
+        <h1>Improve Your<br>
+            <span>Typing Speed</span>
+        </h1>
+
+        <p>
+            Practice typing, improve accuracy and become faster every day.
+        </p>
+
+        <div class="hero-buttons">
+            <button onclick="openPage('speedPage', document.querySelectorAll('.menu-btn')[1])">
+                Start Typing →
+            </button>
+
+            <button class="secondary"
+                    onclick="openPage('practicePage', document.querySelectorAll('.menu-btn')[2])">
+                Learn Typing
+            </button>
+        </div>
+    </div>
+
+
+    <div class="feature-grid">
+
+        <div class="feature-card">
+            <div class="icon">⚡</div>
+            <h2>Speed Test</h2>
+            <p>Check your WPM and typing accuracy.</p>
+        </div>
+
+        <div class="feature-card">
+            <div class="icon">📚</div>
+            <h2>Learn Typing</h2>
+            <p>Practice Easy, Normal and Hard levels.</p>
+        </div>
+
+        <div class="feature-card">
+            <div class="icon">📝</div>
+            <h2>Word Practice</h2>
+            <p>Type words one by one and improve your skills.</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= SPEED TEST ================= -->
+
+<section id="speedPage" class="page">
+
+    <div class="page-title">
+        <h1>⚡ Typing Speed Test</h1>
+        <p>How fast can you type?</p>
+    </div>
+
+
+    <div class="settings">
+
+        <div>
+            <label>Time</label>
+
+            <button class="setting active" onclick="changeTime(15, this)">
+                15s
+            </button>
+
+            <button class="setting" onclick="changeTime(30, this)">
+                30s
+            </button>
+
+            <button class="setting" onclick="changeTime(60, this)">
+                60s
+            </button>
+        </div>
+
+    </div>
+
+
+    <div class="stats">
+
+        <div class="stat-box">
+            <small>TIME</small>
+            <strong id="speedTime">15</strong>
+        </div>
+
+        <div class="stat-box">
+            <small>WPM</small>
+            <strong id="speedWpm">0</strong>
+        </div>
+
+        <div class="stat-box">
+            <small>ACCURACY</small>
+            <strong id="speedAccuracy">100%</strong>
+        </div>
+
+    </div>
+
+
+    <div class="test-box">
+
+        <div id="speedText">
+            The quick brown fox jumps over the lazy dog.
+        </div>
+
+        <textarea
+            id="speedInput"
+            placeholder="Start typing here..."
+            spellcheck="false">
+        </textarea>
+
+    </div>
+
+
+    <button class="restart" onclick="restartSpeedTest()">
+        ↻ Restart
+    </button>
+
+
+    <div id="speedResult" class="result hidden">
+
+        <h2>🎉 Test Finished!</h2>
+
+        <div class="result-stats">
+
+            <div>
+                <small>WPM</small>
+                <b id="finalWpm">0</b>
+            </div>
+
+            <div>
+                <small>Accuracy</small>
+                <b id="finalAccuracy">0%</b>
+            </div>
+
+            <div>
+                <small>Characters</small>
+                <b id="finalChars">0</b>
+            </div>
+
+        </div>
+
+        <button onclick="restartSpeedTest()" class="again">
+            Try Again
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= LEARN ================= -->
+
+<section id="practicePage" class="page">
+
+    <div class="page-title">
+        <h1>📚 Learn Typing</h1>
+        <p>Choose your difficulty and start practicing.</p>
+    </div>
+
+
+    <div class="level-menu">
+
+        <button class="level active-level"
+                onclick="selectLevel('easy', this)">
+            🟢 Easy
+        </button>
+
+        <button class="level"
+                onclick="selectLevel('normal', this)">
+            🟡 Normal
+        </button>
+
+        <button class="level"
+                onclick="selectLevel('hard', this)">
+            🔴 Hard
+        </button>
+
+    </div>
+
+
+    <div class="lesson">
+
+        <div class="lesson-top">
+            <span id="levelName">EASY</span>
+            <span>Practice Mode</span>
+        </div>
+
+        <h2 id="practiceText">
+            cat dog sun pen book
+        </h2>
+
+        <input
+            type="text"
+            id="practiceInput"
+            placeholder="Type the text above..."
+            autocomplete="off"
+        >
+
+        <div class="practice-info">
+
+            <div>
+                Completed:
+                <b id="completedWords">0</b>
+            </div>
+
+            <div>
+                Accuracy:
+                <b id="practiceAccuracy">100%</b>
+            </div>
+
+        </div>
+
+        <button class="restart" onclick="restartPractice()">
+            ↻ Restart Practice
+        </button>
+
+    </div>
+
+
+    <div class="learning-tips">
+
+        <h2>💡 Typing Tips</h2>
+
+        <div class="tip-grid">
+
+            <div>
+                <b>01</b>
+                <p>Don't look at your keyboard.</p>
+            </div>
+
+            <div>
+                <b>02</b>
+                <p>Focus on accuracy before speed.</p>
+            </div>
+
+            <div>
+                <b>03</b>
+                <p>Practice every day.</p>
+            </div>
+
+            <div>
+                <b>04</b>
+                <p>Use both hands properly.</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= WORD PRACTICE ================= -->
+
+<section id="wordPage" class="page">
+
+    <div class="page-title">
+        <h1>📝 Word Practice</h1>
+        <p>Type the word correctly to move to the next one.</p>
+    </div>
+
+
+    <div class="word-card">
+
+        <div class="word-progress">
+            Word <b id="wordNumber">1</b> / 20
+        </div>
+
+        <div id="currentWord">
+            computer
+        </div>
+
+        <input
+            type="text"
+            id="wordInput"
+            placeholder="Type this word..."
+            autocomplete="off"
+        >
+
+        <div class="word-status" id="wordStatus">
+            Start typing...
+        </div>
+
+        <div class="word-score">
+
+            <div>
+                Correct
+                <b id="correctWords">0</b>
+            </div>
+
+            <div>
+                Wrong
+                <b id="wrongWords">0</b>
+            </div>
+
+        </div>
+
+        <button class="restart" onclick="restartWordPractice()">
+            ↻ Restart
+        </button>
+
+    </div>
+
+
+    <div class="word-info">
+
+        <h2>How it works</h2>
+
+        <p>
+            1. एउटा word माथि देखिन्छ।
+        </p>
+
+        <p>
+            2. तलको box मा त्यो word type गर।
+        </p>
+
+        <p>
+            3. सही word पूरा भएपछि अर्को word automatically आउँछ।
+        </p>
+
+        <p>
+            4. 20 वटा word पूरा गरेपछि final result देखिन्छ।
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<footer>
+    <div class="tribute">
+        ✦ Made with ❤️ | A Special Tribute to
+        <strong>Birendra KC</strong> ✦
+    </div>
+
+    <p>TypeMaster • Learn • Practice • Improve 🚀</p>
+</footer>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
